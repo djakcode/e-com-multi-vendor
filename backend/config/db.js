@@ -2,6 +2,7 @@ const Sequelize = require("sequelize");
 const ENV = require("./index.js");
 
 console.log("Initialisation de MySQL...");
+console.log("dialecte", ENV.DIALECT);
 
 // Initialize Sequelize with environment variables
 const db = new Sequelize(ENV.DATABASE, ENV.USER, ENV.PASSWORD, {
