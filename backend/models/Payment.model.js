@@ -6,47 +6,27 @@ const Payment = db.define(
   {
     id: {
       type: DataTypes.INTEGER,
-      autoIncrement: true,
       primaryKey: true,
+      autoIncrement: true,
     },
-    userId: {
-      type: DataTypes.INTEGER,
+    method: {
+      type: DataTypes.STRING,
       allowNull: false,
-      references: {
-        model: "User",
-        key: "id",
-      },
-    },
-    shopId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: "Shop",
-        key: "id",
-      },
-    },
-    orderId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: "Order",
-        key: "id",
-      },
+      validate: { isIn: [["card", "mobile", "cash"]] },
     },
     amount: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: false,
     },
     status: {
       type: DataTypes.STRING,
-      allowNull: false,
-      defaulValue: "à la livraison",
+      defaultValue: "pending",
+      validate: { isIn: [["pending", "completed", "failed"]] },
     },
   },
   {
-    tableName: "Payment",
-  },
-  { timestamps: true }
+    timestamps: true,
+  }
 );
 
 module.exports = Payment;

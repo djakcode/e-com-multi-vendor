@@ -7,8 +7,8 @@ const User = db.define(
   {
     id: {
       type: DataTypes.INTEGER,
-      autoIncrement: true,
       primaryKey: true,
+      autoIncrement: true,
     },
     username: {
       type: DataTypes.STRING,
@@ -28,13 +28,8 @@ const User = db.define(
       type: DataTypes.STRING,
       defaultValue: "user",
       allowNull: false,
-      validate: {
-        isIn: [["user", "admin", "superadmin", "moderator"]],
-      },
+      validate: { isIn: [["user", "admin", "vendor"]] },
     },
-  },
-  {
-    tableName: "User",
   },
   {
     timestamps: true,

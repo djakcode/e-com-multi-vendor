@@ -9,6 +9,11 @@ const app = express();
 const userRoutes = require("./backend/routes/user.route");
 const shopRoutes = require("./backend/routes/shop.route");
 const articleRoutes = require("./backend/routes/article.route");
+const orderRoutes = require("./backend/routes/order.route");
+const orderItemRoutes = require("./backend/routes/orderItem.route");
+const paymentRoutes = require("./backend/routes/payment.route");
+const cartItemRoutes = require("./backend/routes/cartItem.route");
+const cartRoutes = require("./backend/routes/cart.route");
 
 // Port
 const PORT = ENV.PORT || 8000;
@@ -21,6 +26,11 @@ app.use(cookieParser());
 app.use("/api/auth", userRoutes);
 app.use("/api/shop", shopRoutes);
 app.use("/api/article", articleRoutes);
+app.use("/api/order", orderRoutes);
+app.use("/api/orderitem", orderItemRoutes);
+app.use("/api/payment", paymentRoutes);
+app.use("/api/cartitem", cartItemRoutes);
+app.use("/api/cart", cartRoutes);
 
 // Middleware for error handling
 app.use((err, req, res, next) => {

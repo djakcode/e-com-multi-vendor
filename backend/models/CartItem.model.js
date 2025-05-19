@@ -6,33 +6,13 @@ const CartItem = db.define(
   {
     id: {
       type: DataTypes.INTEGER,
-      autoIncrement: true,
       primaryKey: true,
-    },
-    cartId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: "Cart",
-        key: "id",
-      },
-    },
-    articleId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: "Article",
-        key: "id",
-      },
+      autoIncrement: true,
     },
     quantity: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue: 1,
     },
-  },
-  {
-    tableName: "CartItem",
   },
   {
     timestamps: true,

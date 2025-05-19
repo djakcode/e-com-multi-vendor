@@ -1,10 +1,7 @@
 const dotenv = require("dotenv");
 
 dotenv.config();
-console.log("Dialect", process.env.DIALECT);
-console.log("database:", process.env.DATABASE);
-console.log("user:", process.env.DB_USER);
-console.log("port:", process.env.PORT);
+
 // .env config
 const ENV = {
   PORT: process.env.PORT || 8000,

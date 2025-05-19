@@ -177,11 +177,28 @@ const updateUser = async (req, res, next) => {
   }
 };
 
+const getUser = async (req, res, next) => {
+  try {
+    const user = await User.findByPk({
+      where: { id: req.params.id },
+    });
+
+    if (!user) return next(createError(404, "Aucun utilisateur trouvé"));
+
+    res
+      .status(200)
+      .json({ message: "Utilisateur trouvé avec succès", data: user });
+  } catch (error) {
+    next(createError(500, "Erreur dans le serveur", error.message));
+  }
+};
+
 module.exports = {
   signup,
   signin,
   getUsers,
   deleteUser,
   updateUser,
+  getUser,
   // Add other controller functions here (login, getUser, etc.)
 };

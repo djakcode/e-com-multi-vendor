@@ -6,21 +6,9 @@ const Cart = db.define(
   {
     id: {
       type: DataTypes.INTEGER,
-      autoIcrement: true,
       primaryKey: true,
+      autoIncrement: true,
     },
-    userId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      unique: true,
-      references: {
-        model: "User",
-        key: "id",
-      },
-    },
-  },
-  {
-    tableName: "Cart",
   },
   {
     timestamps: true,

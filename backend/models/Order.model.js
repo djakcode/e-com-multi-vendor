@@ -6,43 +6,19 @@ const Order = db.define(
   {
     id: {
       type: DataTypes.INTEGER,
-      autoIncrement: true,
       primaryKey: true,
-      allowNull: false,
-    },
-    userId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: "User",
-        key: "id",
-      },
-    },
-    shopId: {
-      type: DataTypes.INTERGER,
-      allowNull: false,
-      references: {
-        model: "Shop",
-        key: "id",
-      },
-    },
-    totalPrice: {
-      type: DataTypes.FLOAT,
-      allowNull: false,
+      autoIncrement: true,
     },
     status: {
       type: DataTypes.STRING,
       allowNull: false,
-      defaultValue: "en attente",
+      defaultValue: "pending",
+      validate: { isIn: [["pending", "paid", "shipped", "cancelled"]] },
     },
-    paymentStatus: {
-      type: DataTypes.STRING,
+    totalAmount: {
+      type: DataTypes.FLOAT,
       allowNull: false,
-      defaultValue: "en attente",
     },
-  },
-  {
-    tableName: "Order",
   },
   {
     timestamps: true,

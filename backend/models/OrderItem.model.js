@@ -6,37 +6,17 @@ const OrderItem = db.define(
   {
     id: {
       type: DataTypes.INTEGER,
-      autoIncrement: true,
-      allowNull: false,
       primaryKey: true,
-    },
-    orderId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      reference: {
-        model: "Order",
-        key: "id",
-      },
-    },
-    articleId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: "Article",
-        key: "id",
-      },
+      autoIncrement: true,
     },
     quantity: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
     price: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: false,
     },
-  },
-  {
-    tableName: "OrderItem",
   },
   {
     timestamps: true,

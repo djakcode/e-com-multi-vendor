@@ -6,12 +6,15 @@ const Article = db.define(
   {
     id: {
       type: DataTypes.INTEGER,
-      autoIncrement: true,
       primaryKey: true,
+      autoIncrement: true,
     },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    description: {
+      type: DataTypes.TEXT,
     },
     price: {
       type: DataTypes.FLOAT,
@@ -20,19 +23,7 @@ const Article = db.define(
     stock: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue: 0,
     },
-    shopId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: "Shop",
-        key: "id",
-      },
-    },
-  },
-  {
-    tableName: "Article",
   },
   {
     timestamps: true,
